@@ -1,0 +1,136 @@
+.subheading{
+    font-size: 16px;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 700;
+    color: #4e9525;
+}
+.comcolstyle h2{
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #4e9525;
+    font-family: inherit;
+    margin-top: 0;
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    text-align: justify;
+}
+.comcolstyle p{
+    text-align: justify;
+}
+.mb-4 {
+    margin-bottom: 1.5rem !important;
+}
+.bannerlocation{
+  margin-left: 80px;
+    padding: 1px 16px;
+    height: 1000px;
+}
+.comborder{
+
+    text-align: center;
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background: url(https://cdn-web.gofrugal.com/images/inventory_ctrl/banner_bg.svg) no-repeat;
+    background-position: 100% 0px;
+    background-size: contain;
+    padding-left: 150px;
+    padding-top: 1px;
+}
+.comfooter{
+    width: 100%;
+    height: 200px;
+   
+   align-content: center;
+   background-color: rgb(64, 65, 64);
+
+   color:white;
+}
+
+.comlecwisys{
+    color: rgb(41, 37, 235);
+    font-size: 50px;
+    font-weight:bolder;
+    text-shadow: #424444;
+}
+.comtextstyle{
+    font-size: 125px;
+    font-weight:bolder;
+    color: darkorange;
+    
+}
+.sidebanner{
+  width: 100 px;
+  height: 900px;
+  margin-top: 25px;
+  margin-left: 0px;
+  padding-left: 0;
+}
+
+.comcolstyle{
+    padding-top: 50px;
+    padding-bottom: 350px;
+    padding-left: 150px;
+    padding-right: 150px;
+    display: block;
+}
+.invctrl_banner_img img {
+    max-width: 100%;
+    
+    align-self: center;
+    justify-content: right;
+}
+.invctrl-banner {
+    display: block;
+}
+.commenucard{
+    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2);
+    max-width: 520px;
+    max-height: 250px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    background-color: rgb(248, 245, 245);
+  }
+  .comimg-resized{
+    height: 85px;
+    width:85px;
+    padding: 0px;
+    float: left;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /* z-index: -1; */
+  }
+  .comimgcontainer{
+    padding: 0px;  
+    padding-left: 35px;
+  }
+  .comimgcontainer:hover{
+    background-color:rgb(16, 151, 16);
+  }
+  
+  .commenudescription {
+    color: rgb(10, 10, 10);
+    font-size: 30px;
+    text-align:center;
+    padding: 10px 10px 10px 30px;
+    margin: 15px 15px 15px 30px;
+  }
+  .commenudescription:hover{
+    color:rgb(243, 208, 10);
+  }
+  .commenucard:hover{
+    background-color:rgb(133, 130, 130);
+    color: white;
+    
+  }
+  
