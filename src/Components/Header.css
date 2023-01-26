@@ -1,0 +1,79 @@
+.topnav {
+  overflow: hidden;
+  background-color: rgb(233, 230, 230);
+  width:100%;
+  margin-left: 0px;
+}
+div#myTopnav {
+  position: fixed;
+}
+.topnav a {
+  float:left;
+  display: block;
+  color: #0c0c0c;
+  text-align:right;
+  padding: 15px 10px;
+  text-decoration: none;
+  font-size: 13px;
+  justify-content:space-evenly;
+}
+.otherdiv{
+  float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.active {
+  background-color: #f18016;
+  color: rgb(250, 242, 242);
+}
+
+.topnav .icon {
+  display: none;
+}
+
+
+.bgcolor{
+  background-color: rgb(233, 230, 230);
+}
+.bgimg{
+  background-color:rgb(233, 230, 230);
+}
+
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child), .dropdown .dropbtn {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: relative;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: right;
+    display: block;
+    text-align: left;
+  }
+  .topnav.responsive .dropdown {float: none;}
+  .topnav.responsive .dropdown-content {position: relative;}
+  .topnav.responsive .dropdown .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+/* .toryt{
+  float:left;
+  position:relative;
+  align-content: center;
+} */

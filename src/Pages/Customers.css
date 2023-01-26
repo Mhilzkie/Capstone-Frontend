@@ -1,0 +1,101 @@
+.customerdata{
+    margin-left: 20px; /* Same as the width of the sidenav */
+    padding: 0px 0px;
+    margin-top: 8px;
+    margin-bottom: 0px;
+}
+.tablecustomer{
+    width: 90%;
+    margin-left: 5%;
+}
+.customertable{
+    height: 700px;
+}
+.customerform{
+    padding-left: 190px;
+}
+.customerheader{
+    height: 50px;
+    margin-left: 10px;
+}
+.custalign{
+    width: 20%;
+    height: 50px;
+    padding: 10px;
+    padding-right: 0px;
+    margin-right: 1px;
+    padding-left: 2px;
+  }
+.customerfooter{
+    width: 102%;
+    height: 200px;
+   background-color: rgb(52, 53, 52);
+   align-content: center;
+   color:black;
+   color:rgb(253, 252, 252);
+}
+p{
+    color: rgb(10, 10, 10);
+    font-size: 15px;
+    font-weight:bolder;
+    text-shadow: #424444;
+}
+h4{
+    color: rgb(41, 37, 235);
+    font-size: 50px;
+    font-weight:bolder;
+    text-shadow: #424444;
+}
+.textstyle{
+    font-size: 125px;
+    font-weight:bolder;
+    color: darkorange;
+    
+}
+
+/* .colstyle{
+    margin:50px 50px;
+    padding:  50px 50px;
+    margin-left: 150px ;
+    margin-top: 220px;
+} */
+.contentstyle{
+    padding-top: 100px;
+    display: block;
+}
+
+.imgpos{
+    align-self: center;
+    align-content: center;
+    padding: 20px;
+    margin: 10px;
+    
+}.invctrl_banner_img img {
+    max-width: 100%;
+    
+    align-self: center;
+    justify-content: right;
+}
+.invctrl-banner {
+    display: block;
+}
+h1{
+    align-content:center;
+}
+p{
+    
+    align-content: center;
+}
+.CustomerLayout{
+    margin: 20px 20px;
+    border: 2px;
+    border:darkslategrey
+}
+.btnaddcustomer{
+    padding:15px;
+    margin-top: 1px;
+    padding-top: 1px;
+
+
+
+  }
