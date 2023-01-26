@@ -46,13 +46,8 @@ const Footer = () => {
         </div>
         
     </div>
-
-    // <div className="App">
-    // {
-    //   <Header/>
-    // //   currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />
-    // }
-    // </div>
+  
+  
   );
 }
 

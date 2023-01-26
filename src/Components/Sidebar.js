@@ -77,9 +77,8 @@ const Sidebar = () =>{
             <div className="accountlog">
             <button  type="button" className="btn btn-success">Logout</button>
             </div>
-    
             
-        </div>
+            </div>
         <div className="col">
         <Routes>
           <Route exact path="/" element = {<Homepage />}></Route>
