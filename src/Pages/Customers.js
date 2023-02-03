@@ -1,16 +1,33 @@
 import '../Components/App.css';
 import '../Pages/Customers.css';
-
-import React, {useState} from 'react';
-
+import React, { Component } from "react";
+import axios from 'axios';
 const currentYear = (new Date().getFullYear())
 const yearTxt = currentYear === 2022 ? "2022" : "2022 - "+currentYear
+export default class Customers extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+          customers: []
+        }
+      }
+    
+    componentDidMount = () => {
+        fetch(`http://localhost:4000/customers`)
+          .then(res =>res.json())
+          .then(response => {
+              console.log(response);
+              this.setState({
+                customers: [...response.results]
+              })
+            }
+          )
+      }
 
-const Customers = () => {
-
-  return (
+      render() {
+        return (
   
-    <div className="customerform">
+        <div className="customerform">
                 
                 <div className="customerheader bg-white row border order:1px solid">
                     
@@ -39,47 +56,20 @@ const Customers = () => {
                         </tr>
                     </thead>
                     <tbody>
+                    {
+                this.state.customers.map((customer, index) => {
+                     return (
                         <tr>
-                        <th scope="row">1</th>
-                        <td>Lagarde, Merriam</td>
-                        <td>09178384738</td>
-                        <td>Sta Cruz Ratay Cam. Sur</td>
-                        <td>Regular</td>
+                        <th scope="row">{customer.id}</th>
+                        <td>{customer.customer_Name}</td>
+                        <td>{customer.customer_ContactNo}</td>
+                        <td>{customer.customer_Address}</td>
+                        <td>{customer.customer_Status}</td>
                         <td><button  type="button" className="btn btn-success">Edit</button><button  type="button" className="btn btn-danger">Del</button></td>
                         </tr>
-                        <tr>
-                        <th scope="row">2</th>
-                        <td>Samsun Lumpia Wrapper</td>
-                        <td>094586453829</td>
-                        <td>San Miguel, Calabanga, Camarines Sur</td>
-                        <td>Regular</td>
-                        <td><button  type="button" className="btn btn-success">Edit</button><button  type="button" className="btn btn-danger">Del</button></td>
-                        </tr>
-                        <tr>
-                        <th scope="row">3</th>
-                        <td>Insuya Catering</td>
-                        <td>092587073546</td>
-                        <td>Sack</td>
-                        <td>Regular</td>
-                        <td><button  type="button" className="btn btn-success">Edit</button><button  type="button" className="btn btn-danger">Del</button></td>
-                        </tr>
-                        <tr>
-                        <th scope="row">4</th>
-                        <td>Medroville Farm</td>
-                        <td>091863749382</td>
-                        <td>Talacup, Manguiring, Calabanga Camarines Sur</td>
-                        <td>Regular</td>
-                        <td><button  type="button" className="btn btn-success">Edit</button><button  type="button" className="btn btn-danger">Del</button></td>
-                        </tr>
-                        <tr>
-                        <th scope="row">5</th>
-                        <td>Marpus Bakery</td>
-                        <td>092163792749</td>
-                        <td>Zone 2 Sana Isidro, Calabanga Camarines Sur</td>
-                        <td>New</td>
-                        <td><button  type="button" className="btn btn-success">Edit</button><button  type="button" className="btn btn-danger">Del</button></td>
-                        </tr>
-                        
+                     )
+                    })
+                }
                     </tbody>
                 </table>
                 
@@ -104,7 +94,6 @@ const Customers = () => {
             </div>
            
         </div>
-  );
+        );
+    }
 }
-
-export default Customers;
