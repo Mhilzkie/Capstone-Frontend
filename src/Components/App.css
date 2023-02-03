@@ -91,6 +91,7 @@ button{
   
 }
 .contentstyle{
-  /* margin: 10px 10px; */
-  height: 100%;
-}
+  margin: 10px 10px;
+  height: 100%; 
+} 
+  

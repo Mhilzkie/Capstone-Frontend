@@ -7,9 +7,9 @@ import Sidebar from '../Components/Sidebar';
 import Users from './Users';
 import Products from './Products';
 import Header from '../Components/Header';
-import Login from './Login';
+// import Login from './Login';
 import '../Pages/Dashboard.css';
-
+import {Component} from 'react';
 import React, {useState} from 'react';
 // import { Login } from"./Login";
 import  Register from "./Register";
@@ -22,10 +22,81 @@ import imgUser from "../Images/User.png";
 
 const currentYear = (new Date().getFullYear())
 const yearTxt = currentYear === 2022 ? "2022" : "2022 - "+currentYear
+// const url = "http://localhost:4000/dashboard";
+export default class Dashboard extends Component{
+  constructor(props) {
+      super(props);
+      this.state = {
+        producs: [],
+      }
+      this.state = {
+        users:[],
+      }
+      this.state = {
+        customers:[]
+      }
+    }
+    
 
-const Dashboard = () => {
+  componentDidMount = () => {
+      // fetch(`http://localhost:4000/dashboard`)
+      Promise.all([
+        fetch(`http://localhost:4000/dashboard`),
+        fetch(`http://localhost:4000/dashboard2`),
+        fetch(`http://localhost:4000/dashboard3`),
+      ])
+      .then(([res1, res2, res3]) => (
+        {
+          res1: res1.json(),
+          res2: res2.json(),
+          res3: res3.json(),
+          
+      }))
+      .then(({res1, res2, res3}) => {
+        this.setState({
+          state1: res1,
+          state2: res2,
+          state3: res3,
+          
+        });
+        console.log(res1);
+        console.log(res2);
+        console.log(res3);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+        // .then(res =>res.json())
+        // .then(response => {
+        //     console.log(response);
+        //     this.setState({
+        //       products: [...response.results],
+        //     })
+        //   }
+        // )
+        
+        // .then(res =>res.json())
+        // .then(response => {
+        //     console.log(response);
+        //     this.setState({
+        //       users: [...response.results],
+        //     })
+        //   }
+        // )
+        
+        // .then(res =>res.json())
+        // .then(response => {
+        //     console.log(response);
+        //     this.setState({
+        //       customers: [...response.results],
+        //     })
+        //   }
+        // )
+      }
 
-  return (
+    render() {
+
+return (
         <div>
             <div className='dashboard_form'>
             <div className="dasheader bg-white border order:1px solid">
@@ -258,5 +329,4 @@ const Dashboard = () => {
    
   );
 }
-
-export default Dashboard;
+}

@@ -7,10 +7,11 @@ import Sidebar from '../Components/Sidebar';
 import Dashboard from './Dashboard';
 import Products from './Products';
 import Header from '../Components/Header';
-import Login from './Login';
+// import Login from './Login';
 import './Users.css';
-
+import { Component } from "react";
 import React, {useState} from 'react';
+import axios from 'axios';
 // import { Login } from"./Login";
 import  Register from "./Register";
 import imgban from "../Images/banner.svg";
@@ -18,7 +19,27 @@ import imgban from "../Images/banner.svg";
 const currentYear = (new Date().getFullYear())
 const yearTxt = currentYear === 2022 ? "2022" : "2022 - "+currentYear
 
-const Users = () => {
+export default class Users extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+          users: []
+        }
+      }
+    
+    componentDidMount = () => {
+        fetch(`http://localhost:4000/users`)
+          .then(res =>res.json())
+          .then(response => {
+              console.log(response);
+              this.setState({
+                users: [...response.results]
+              })
+            }
+          )
+      }
+
+      render() {
 
   return (
   
@@ -36,7 +57,7 @@ const Users = () => {
                         </div>  
                 </div>
                 
-                {/* <div className="userdata col" > */}
+                
                     <div className="row userdata">
                         <table class="table caption-top">
                             <caption>List of Users</caption>
@@ -51,40 +72,20 @@ const Users = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                <th scope="row">1</th>
-                                <td>System Admin</td>
-                                <td>Super Admin</td>
-                                <td>adminlec</td>
-                                <td>*******</td>
-                                <td><button  type="button" className="btn btn-success">Edit</button><button  type="button" className="btn btn-danger">Del</button></td>
-                                </tr>
-                                <tr>
-                                <th scope="row">2</th>
-                                <td>Luningning Cuarto</td>
-                                <td>Admin</td>
-                                <td>ningning</td>
-                                <td>*******</td>
-                                <td><button  type="button" className="btn btn-success">Edit</button><button  type="button" className="btn btn-danger">Del</button></td>
-                                </tr>
-                                <tr>
-                                <th scope="row">3</th>
-                                <td>Esperanza Encinares</td>
-                                <td>User</td>
-                                <td>Esphie</td>
-                                <td>********</td>
-                                <td><button  type="button" className="btn btn-success">Edit</button><button  type="button" className="btn btn-danger">Del</button></td>
-                                </tr>
-                                <tr>
-                                <th scope="row">4</th>
-                                <td>Amyfel Dela Torre</td>
-                                <td>User</td>
-                                <td>amzie.ae</td>
-                                <td>*******</td>
-                                <td><button  type="button" className="btn btn-success">Edit</button><button  type="button" className="btn btn-danger">Del</button></td>
-                                </tr>
-                                
-                                
+                            {
+                this.state.users.map((user, index) => {
+                     return (
+                        <tr>
+                        <th scope="row">{user.id}</th>
+                        <td>{user.user_CompleteName}</td>
+                        <td>{user.user_AccountType}</td>
+                        <td>{user.user_Username}</td>
+                        <td>{user.user_Password}</td>
+                        <td><button  type="button" className="btn btn-success">Edit</button><button  type="button" className="btn btn-danger">Del</button></td>
+                        </tr>
+                     )
+                    })
+                }
                             </tbody>
                         </table>
                         
@@ -112,5 +113,4 @@ const Users = () => {
    
   );
 }
-
-export default Users;
+}
