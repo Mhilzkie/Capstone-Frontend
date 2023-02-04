@@ -22,90 +22,42 @@ import imgUser from "../Images/User.png";
 
 const currentYear = (new Date().getFullYear())
 const yearTxt = currentYear === 2022 ? "2022" : "2022 - "+currentYear
+const productCount = 0;
 // const url = "http://localhost:4000/dashboard";
 export default class Dashboard extends Component{
   constructor(props) {
       super(props);
       this.state = {
-        producs: [],
-      }
-      this.state = {
+        products: [],
         users:[],
-      }
-      this.state = {
-        customers:[]
+        customers:[],
       }
     }
     
 
-  componentDidMount = () => {
-      // fetch(`http://localhost:4000/dashboard`)
-      Promise.all([
-        fetch(`http://localhost:4000/dashboard`),
-        fetch(`http://localhost:4000/dashboard2`),
-        fetch(`http://localhost:4000/dashboard3`),
-      ])
-      .then(([res1, res2, res3]) => (
-        {
-          res1: res1.json(),
-          res2: res2.json(),
-          res3: res3.json(),
-          
-      }))
-      .then(({res1, res2, res3}) => {
-        this.setState({
-          state1: res1,
-          state2: res2,
-          state3: res3,
-          
-        });
-        console.log(res1);
-        console.log(res2);
-        console.log(res3);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-        // .then(res =>res.json())
-        // .then(response => {
-        //     console.log(response);
-        //     this.setState({
-        //       products: [...response.results],
-        //     })
-        //   }
-        // )
-        
-        // .then(res =>res.json())
-        // .then(response => {
-        //     console.log(response);
-        //     this.setState({
-        //       users: [...response.results],
-        //     })
-        //   }
-        // )
-        
-        // .then(res =>res.json())
-        // .then(response => {
-        //     console.log(response);
-        //     this.setState({
-        //       customers: [...response.results],
-        //     })
-        //   }
-        // )
-      }
+  componentDidMount = (e) => {
+        fetch(`http://localhost:4000/dashboard`)
+        .then(res =>res.json())
+        .then(response => {
+            console.log(response);
+            this.setState({
+              
+              products: [response.results.products.length],
+              users: [response.results.users.length],
+              customers: [response.results.customers.length],
+            })
+            // console.log();
+          }
+        )
+    }
 
     render() {
-
-return (
-        <div>
+      return (
+          <div>
             <div className='dashboard_form'>
-            <div className="dasheader bg-white border order:1px solid">
-                    
-                        <label className="text-dark talign"><i className="fa fa-fw fa-th"></i>
-                        <span>      </span>Dashboard</label><label className="prosubname">-  Management</label>
-                        
-                  
-                    
+            <div className="dasheader bg-white border order:1px solid">   
+              <label className="text-dark talign"><i className="fa fa-fw fa-th"></i>
+                <span>      </span>Dashboard</label><label className="prosubname">-  Management</label>
                 </div>
                 <div className='box'>
                 {/* CreateCard(); */}
@@ -129,7 +81,14 @@ return (
                           <img className='img-resized' src={require('../Images/product.png')} />
                         </div>
                         <div className='col'>
-                          <p className='qty'>100</p>
+                          {/* if({(this.state.products).va}!0){
+                            return( */}
+                              <p className='qty'>{this.state.products}</p>
+                            {/* )
+                          }else{ */}
+                            
+                          {/* } */}
+                          
                         </div>
                       </div>
                       <div>
@@ -142,7 +101,7 @@ return (
                           <img className='img-resized' src={require('../Images/ordermed.png')} />
                         </div>
                         <div className='col'>
-                          <p className='qty'>10</p>
+                          <p className='qty'>0</p>
                         </div>
                       </div>
                       <div>
@@ -155,7 +114,7 @@ return (
                           <img className='img-resized' src={require('../Images/customers.png')} />
                         </div>
                         <div className='col'>
-                          <p className='qty'>15</p>
+                          <p className='qty'>{this.state.customers}</p>
                         </div>
                       </div>
                       <div>
@@ -168,7 +127,7 @@ return (
                           <img className='img-resized' src={require('../Images/User.png')} />
                         </div>
                         <div className='col'>
-                          <p className='qty'>2</p>
+                          <p className='qty'>{this.state.users}</p>
                         </div>
                       </div>
                       <div>
