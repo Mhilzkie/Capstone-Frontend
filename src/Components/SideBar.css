@@ -21,6 +21,7 @@ body {
     margin-top: 130px;
   }
   .accountlog{
+    margin-top: 100px;
     text-align: center;
   }
   .sidebar {
@@ -119,4 +120,22 @@ body {
     text-align: left;
     cursor: pointer;
     outline: none;
+  }
+
+  .modalbutton{
+    width: 20%;
+    
+  }
+
+  .Mheader{
+    background-color: black;
+   
+  }
+
+  .input1, .input2{
+    width: 60%;
+  }
+
+  .btn-close{
+    background-color: white;
   }

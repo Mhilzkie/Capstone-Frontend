@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import  { BrowserRouter as Router, Route, NavLink , Routes as Switch, Routes} from "react-router-dom";
 import './SideBar.css';
 import mylogo from  '../Images/lelogo.png';
+import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import Dashboard from "../Pages/Dashboard";
 import Homepage from "../Pages/Homepage";
 import Products from "../Pages/Products";
@@ -9,8 +10,12 @@ import Users from "../Pages/Users";
 import Customers from "../Pages/Customers";
 import Company from "../Pages/Company";
 import Order from "../Pages/Order";
+import Login from '../Pages/Login';
 
 const Sidebar = () =>{
+
+    const [modal, setModal] = useState(true);
+    const toggle = () => setModal(!modal);
     return(
          
     <div >
@@ -66,16 +71,11 @@ const Sidebar = () =>{
                   </i><span>      
                     </span>Company</NavLink>
           
-            <div className="userlogin">
-            <i className="fa fa-fw fa-user-circle-o ">
-                  </i>Login as :
-            </div>
             <div className="accountlog">
-            <i className="">
-                  </i>Administrator
+            <div>
+              <button type="button" className="btnlogin btn btn-success" onClick={toggle}>Login</button>
+              <Login modal={modal} toggle={toggle} />
             </div>
-            <div className="accountlog">
-            <button  type="button" className="btn btn-success">Logout</button>
             </div>
             
             </div>
