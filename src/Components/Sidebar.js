@@ -5,12 +5,14 @@ import mylogo from  '../Images/lelogo.png';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import Dashboard from "../Pages/Dashboard";
 import Homepage from "../Pages/Homepage";
-import Products from "../Pages/Products";
+import Products from "../Pages/Productss";
 import Users from "../Pages/Users";
 import Customers from "../Pages/Customers";
 import Company from "../Pages/Company";
 import Order from "../Pages/Order";
 import Login from '../Pages/Login';
+import Suppliers from '../Pages/Suppliers';
+
 
 const Sidebar = () =>{
 
@@ -54,6 +56,11 @@ const Sidebar = () =>{
                 <i className="fa fa-fw fa-building ">
                   </i><span>      
                     </span>Customers</NavLink>
+              <NavLink 
+              exact activeClassName=" mt-0 " 
+              to="/suppliers"><i className="fa fa-fw fa-user-circle-o ">
+                </i><span>      
+                  </span>Supplier</NavLink>
             <NavLink 
               exact activeClassName=" mt-0 " 
               to="/users"><i className="fa fa-fw fa-user-circle-o ">
@@ -85,6 +92,7 @@ const Sidebar = () =>{
           <Route  path="/dashboard" element={<Dashboard />}></Route>
           <Route  path="/products" element={<Products />}></Route>
           <Route  path="/customers" element={<Customers />}></Route>
+          <Route  path="/suppliers" element={<Suppliers />}></Route>
           <Route  path="/users" element={<Users />}></Route>
           <Route  path="/company" element={<Company />}></Route>
           <Route  path="/orders" element={<Order />}></Route>

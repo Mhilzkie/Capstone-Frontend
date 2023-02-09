@@ -11,18 +11,12 @@ import Header from '../Components/Header';
 import '../Pages/Dashboard.css';
 import {Component} from 'react';
 import React, {useState} from 'react';
-// import { Login } from"./Login";
-import  Register from "./Register";
-import imgban from "../Images/banner.svg";
-import imgcard from "../Images/product.png";
-import imgorder from "../Images/ordermed.png";
-import imgCustomer from "../Images/customer.png";
-import imgUser from "../Images/User.png";
+import Footer from '../Components/Footer';
 
 
 const currentYear = (new Date().getFullYear())
 const yearTxt = currentYear === 2022 ? "2022" : "2022 - "+currentYear
-const productCount = 0;
+
 // const url = "http://localhost:4000/dashboard";
 export default class Dashboard extends Component{
   constructor(props) {
@@ -31,6 +25,7 @@ export default class Dashboard extends Component{
         products: [],
         users:[],
         customers:[],
+        productcriticals:[],
       }
     }
     
@@ -45,15 +40,25 @@ export default class Dashboard extends Component{
               products: [response.results.products.length],
               users: [response.results.users.length],
               customers: [response.results.customers.length],
+              productcriticals:[response.results.productcriticals.length],
+   
             })
             // console.log();
           }
         )
     }
+    // console.log(productCount); 
+
+    criticalStocks = (count)  => {}
 
     render() {
+      let productCount = 0;
+      let userCount = '';
+      let customerCount= '';
       return (
+        
           <div>
+            
             <div className='dashboard_form'>
             <div className="dasheader bg-white border order:1px solid">   
               <label className="text-dark talign"><i className="fa fa-fw fa-th"></i>
@@ -62,33 +67,54 @@ export default class Dashboard extends Component{
                 <div className='box'>
                 {/* CreateCard(); */}
                   <div className='row cardcontainer'>
-                  <div className='col menucard blink-bg'>
-                      <div className='row rowhyt'>
-                        <div className='col ccontainer'>
-                          <img className='img-resized' src={require('../Images/critical.png')} />
-                        </div>
-                        <div className='col'>
-                          <p className='qty'>2</p>
+                  {
+                    this.state.productcriticals.map((productcritical, index) => {
+                    if (productcritical==0)  {
+                      return (
+                        <div className='col menucard'>
+                          <div className='row rowhyt'>
+                            <div className='col ccontainer'>
+                              <img className='img-resized' src={require('../Images/critical.png')} />
+                            </div>
+                          <div className='col'>
+                          <p className='qty'>{this.state.productcriticals}</p>
                         </div>
                       </div>
                       <div>
                         <p className='producttotal'>Total Critical Stocks</p>
                       </div>
                     </div>
+                      )
+                    }else{
+                      return (
+                        <div className='col menucard blink-bg'>
+                         <div className='row rowhyt'>
+                            <div className='col ccontainer'>
+                              <img className='img-resized' src={require('../Images/critical.png')} />
+                            </div>
+                          <div className='col'>
+                          <p className='qty'>{this.state.productcriticals}</p>
+                        </div>
+                      </div>
+                      <div>
+                        <p className='producttotal'>Total Critical Stocks</p>
+                      </div>
+                    </div>
+                      )
+                    }
+                  })
+                  }                  
+                  
+                  
+
                     <div className='col menucard'>
                       <div className='row rowhyt'>
                         <div className='col ccontainer'>
                           <img className='img-resized' src={require('../Images/product.png')} />
                         </div>
-                        <div className='col'>
-                          {/* if({(this.state.products).va}!0){
-                            return( */}
-                              <p className='qty'>{this.state.products}</p>
-                            {/* )
-                          }else{ */}
-                            
-                          {/* } */}
-                          
+                        <div className='col'>   
+                       
+                            <p className='qty'>{this.state.products}</p>                           
                         </div>
                       </div>
                       <div>
@@ -132,6 +158,19 @@ export default class Dashboard extends Component{
                       </div>
                       <div>
                         <p className='producttotal'>Total Users</p>
+                      </div>
+                    </div>
+                    <div className='col menucard'>
+                      <div className='row rowhyt'>
+                        <div className='col ccontainer'>
+                          <img className='img-resized' src={require('../Images/customers.png')} />
+                        </div>
+                        <div className='col'>
+                          <p className='qty'>{this.state.users}</p>
+                        </div>
+                      </div>
+                      <div>
+                        <p className='producttotal'>Total Suppliers</p>
                       </div>
                     </div>
                     <div className='col menucard'>
@@ -263,7 +302,7 @@ export default class Dashboard extends Component{
                 </div>
                                
               </div>
-              
+              {/* <Footer/> */}
               <div className="row dashboardfooter">"
                 <div>
                     <i className="fa fa-fw fa-map-marker fa-lg"></i><label className='text-white'>Address : Zone 5, San Pablo, Calabanga, Camarines Sur</label>

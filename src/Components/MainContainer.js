@@ -1,9 +1,11 @@
 import React from "react";
 import  { BrowserRouter as Router, Route, NavLink , Routes as Switch, Routes} from "react-router-dom";
 import Sidebar from "../Components/Sidebar";
+import { modal, toggle} from 'reactstrap';
 // import Login from "../Pages/Login";
 
 const MainContainer = () =>{
+   
     return(
          
     <div >

@@ -86,17 +86,17 @@ export default class Products extends Component{
                     <i className="fa fa-fw fa-map-marker fa-lg"></i><label className='text-white'>Address : Zone 5, San Pablo, Calabanga, Camarines Sur</label>
                 </div>
                 <div>
-                    <i className="fa fa-fw fa-phone fa-lg"></i><label className='text-white'>Phone : 054-871-6778</label>
+                <i className="fa fa-fw fa-phone fa-lg"></i><label className='text-white'>Phone : 054-871-6778</label>
                 </div>
                 <div>
-                    <i className="fa fa-fw fa-facebook-square fa-lg"></i>
-                    <i className="fa fa-fw fa-envelope fa-lg"></i>
-                    <i className="fa fa-fw fa-linkedin-square fa-lg"></i>
+                <i className="fa fa-fw fa-facebook-square fa-lg"></i>
+                <i className="fa fa-fw fa-envelope fa-lg"></i>
+                <i className="fa fa-fw fa-linkedin-square fa-lg"></i>
                 </div>
                 
-                <div>
+                    <div>
                     Copyright © { yearTxt } All rights reserved - LEC
-                </div>
+                    </div>
             </div>
         </div>
     </div>

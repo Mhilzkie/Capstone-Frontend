@@ -1,15 +1,6 @@
 import '../Components/App.css';
-// import Header from  "./Header";
-import AddContacts from "./Products";
-// import ContactList from "./ContactList";
-import Sidebar from '../Components/Sidebar';
-// import Login from './Login';
-import Dashboard from './Dashboard';
-import Users from './Users';
-import Products from './Products';
-import Header from '../Components/Header';
-// import Login from './Login';
 import './Homepage.css';
+import Footer from '../Components/Footer';
 
 import React, {useState} from 'react';
 // import { Login } from"./Login";
@@ -43,7 +34,8 @@ const Homepage = () => {
             <div className="row">
             <img className='homebannedsize' src={require('../Images/home.png')} />
             </div>
-            <div className="row footer">
+            <Footer/>
+            {/* <div className="row footer">
                 <div>
                     <i className="fa fa-fw fa-map-marker fa-lg">
                         </i><label className='text-white'>
@@ -62,7 +54,8 @@ const Homepage = () => {
                     <div>
                     Copyright © { yearTxt } All rights reserved - LEC
                     </div>
-            </div>
+            </div> */}
+
         </div>
         
     </div>
