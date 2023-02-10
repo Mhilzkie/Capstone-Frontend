@@ -6,18 +6,19 @@ import axios from 'axios';
 import  Register from "./Register";
 import imgban from "../Images/banner.svg";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { Variable } from "eslint-scope";
 
 const currentYear = (new Date().getFullYear())
 const yearTxt = currentYear === 2022 ? "2022" : "2022 - "+currentYear
+
+
+
 export default class Products extends Component{
     
 
     constructor(props) {
         super(props);
         this.state = {
-          products: [],
-          
+          products: []
         }
       }
 
@@ -43,40 +44,7 @@ export default class Products extends Component{
           )
       }
     
-      addNewProduct = () => {
-        //  e.preventDefault();
-        // e.preventDefault();
-        // const newProduct = document.cookie.split(';')[0].split('=')[1];
-        // console.log(Productinfo);
-        var productName= document.getElementById('product_Name').value
-        // console.log(productName);
-        var productBrand=document.getElementById('product_Description').value
-        // console.log(productBrand);
-        var productUnit=document.getElementById('product_Unit').value
-        // console.log(productUnit);
-        var productPrice=document.getElementById('product_Price').value
-        // console.log(productPrice);
-        var productQuatity = document.getElementById('product_Quantity').value
-        // console.log(productQuatity);
-        
-        // const insertProduct = { productName,productBrand,productUnit,productPrice,productQuatity };
-        // console.log(insertProduct);
-        axios.post(`http://localhost:4000/form-new-product`, {
-
-        product_Name: productName,
-        product_Description: productBrand,
-        product_Unit: productUnit,
-        product_Quantity: productQuatity,
-        product_Price: productPrice
       
-        }).then((response) => {
-          this.setState({
-            // products: [...response.results]
-          })
-          
-        });
-        // const refresh = () => window.location.reload(true)
-      }
 
     render() {
        
@@ -103,55 +71,48 @@ export default class Products extends Component{
 
                   {/* <button  type="button" className="btn btn-info"> + Add Stocks</button> */}
                 </div>
-                
                 <Modal isOpen={this.state.modal} toggle={this.toggle}>
                   <ModalHeader toggle={this.toggle}>
                     Add New Product
                   </ModalHeader>
                   <ModalBody>
-                    
                     <div className="form-group">
-                   
                       <label htmlFor="item">Item</label>
                       <input
                         type="text"
                         className="form-control"
-                        name="product_Name"
-                        id="product_Name"
+                        id="item"
                         placeholder="Enter item name"
                       />
                     </div>
-                    
                     <div className="form-group">
                       <label htmlFor="brand">Brand</label>
                       <input
                         type="text"
-                        name="product_Description"
                         className="form-control"
-                        id="product_Description"
+                        id="brand"
                         placeholder="Enter brand name"
                       />
                     </div>
                     <div className="form-group">
                       <label htmlFor="unit">Unit</label>
-                      <select name="product_Unit" className="form-control" id="product_Unit" 
-                        placeholder="Enter Unit">
-                        <option value="Bag">Bag</option>
-                        <option value="Box">Box</option>
-                        <option value="Case">Case</option>
-                        <option value="Container">Container</option>
-                        <option value="Drum">Drum</option>
-                        <option value="Pail">Pail</option>
-                        <option value="Sack">Sack</option>
+                      <select className="form-control" id="unit">
+                        <option value="">Select Unit</option>
+                        <option value="select1">Bag</option>
+                        <option value="select2">Box</option>
+                        <option value="select3">Case</option>
+                        <option value="select3">Container</option>
+                        <option value="select3">Drum</option>
+                        <option value="select3">Pail</option>
+                        <option value="select3">Sack</option>
                       </select>
                     </div>
                     <div className="form-group">
                       <label htmlFor="price">Price</label>
                       <input
                         type="text"
-                        name="product_Price"
                         className="form-control"
-                        id="product_Price"
+                        id="price"
                         placeholder="Enter price"
                       />
                     </div>
@@ -159,28 +120,24 @@ export default class Products extends Component{
                       <label htmlFor="quantity">Quantity</label>
                       <input
                         type="text"
-                        name="product_Quantity"
                         className="form-control"
-                        id="product_Quantity"
+                        id="quantity"
                         placeholder="Enter quantity"
                       />
-                      
                     </div>
-                    
                   </ModalBody>
                   <ModalFooter>
-                    <Button color="primary" type="submit" onClick={() => this.addNewProduct()}>
+                    <Button color="primary" onClick={this.toggle}>
                       Save
                     </Button>{" "}
                     <Button color="secondary" onClick={this.toggle}>
-                      
                       Cancel
                     </Button>
                   </ModalFooter>
                 </Modal>
               </div>
             </div>
-            
+
             <div className="mainproduct">
               <div className="producttable">
                 <table class="table caption-top">
@@ -210,6 +167,46 @@ export default class Products extends Component{
                             <button type="button" className="btn btn-success">
                               Edit
                             </button>
+                            <Modal
+                              isOpen={this.state.modal}
+                              toggle={this.toggle}
+                            >
+                              <ModalHeader toggle={this.toggle}>
+                                Edit Product
+                              </ModalHeader>
+                              <ModalBody>
+                              <form>
+                                  <div class="form-group">
+                                    <label for="productNameInput">Product Name</label>
+                                    <input type="text" class="form-control" id="productNameInput" value={product.product_Name} />
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="productDescriptionInput">Product Description</label>
+                                    <input type="text" class="form-control" id="productDescriptionInput" value={product.product_Description} />
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="productUnitInput">Product Unit</label>
+                                    <input type="text" class="form-control" id="productUnitInput" value={product.product_Unit} />
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="productPriceInput">Product Price</label>
+                                    <input type="text" class="form-control" id="productPriceInput" value={product.product_Price} />
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="productQuantityInput">Product Quantity</label>
+                                    <input type="text" class="form-control" id="productQuantityInput" value={product.product_Quantity} />
+                                  </div>
+                                </form>
+                              </ModalBody>
+                              <ModalFooter>
+                                <Button color="primary" onClick={this.toggle}>
+                                  Save
+                                </Button>{" "}
+                                <Button color="secondary" onClick={this.toggle}>
+                                  Cancel
+                                </Button>
+                              </ModalFooter>
+                            </Modal>
                             <button type="button" className="btn btn-danger">
                               Del
                             </button>
@@ -228,17 +225,6 @@ export default class Products extends Component{
                   </label>
                 </div>
                 <div>
-                <i className="fa fa-fw fa-phone fa-lg"></i><label className='text-white'>Phone : 054-871-6778</label>
-                </div>
-                <div>
-                <i className="fa fa-fw fa-facebook-square fa-lg"></i>
-                <i className="fa fa-fw fa-envelope fa-lg"></i>
-                <i className="fa fa-fw fa-linkedin-square fa-lg"></i>
-                </div>
-                
-                    <div>
-                    Copyright © { yearTxt } All rights reserved - LEC
-                    </div>
                   <i className="fa fa-fw fa-phone fa-lg"></i>
                   <label className="text-white">Phone : 054-871-6778</label>
                 </div>
@@ -251,7 +237,7 @@ export default class Products extends Component{
                 <div>Copyright © {yearTxt} All rights reserved - LEC</div>
               </div>
             </div>
-          // </div>
+          </div>
         );
 }
 }
