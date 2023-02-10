@@ -5,7 +5,7 @@ import mylogo from  '../Images/lelogo.png';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import Dashboard from "../Pages/Dashboard";
 import Homepage from "../Pages/Homepage";
-import Products from "../Pages/Productss";
+import Products from "../Pages/Products";
 import Users from "../Pages/Users";
 import Customers from "../Pages/Customers";
 import Company from "../Pages/Company";
