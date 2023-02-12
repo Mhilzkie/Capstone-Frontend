@@ -16,6 +16,8 @@ import axios from 'axios';
 import  Register from "./Register";
 import imgban from "../Images/banner.svg";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { ThemeConsumer } from 'react-bootstrap/esm/ThemeProvider';
+import { render } from '@testing-library/react';
 
 const currentYear = (new Date().getFullYear())
 const yearTxt = currentYear === 2022 ? "2022" : "2022 - "+currentYear
@@ -47,10 +49,57 @@ export default class Users extends Component{
               })
             }
           )
+          
       }
 
-      render() {
+      addNewUser = () => {
+        var userName= document.getElementById('UserName').value
+        var password=document.getElementById('Password').value
+        var accountName=document.getElementById('AccountName').value
+        var accountType=document.getElementById('AccountType').value
+                
+        axios.post(`http://localhost:4000/form-new-user`, {
 
+        user_Username: userName,
+        user_Password: password,
+        user_CompleteName: accountName,
+        user_AccountType: accountType
+      
+        }).then((response) => {
+          this.setState({
+            users: [
+              ...this.state.users,
+              {user_Username: userName,
+                user_Password: password,
+                user_CompleteName: accountName,
+                user_AccountType: accountType}
+              ]
+          })
+        });
+        this.toggle();
+      }
+
+      userDelete(id){
+       // const confirmDelete = window.confirm(`Delete the entry with id ${id}?`);
+      // if (confirmDelete){
+        
+        axios.delete(`http://localhost:4001/userdelete/${id}`)
+        .then(() => {
+          // const updatedIndex = this.state.tasks.findIndex(task => task.id === id);
+          // get index of updated entry on array
+          // this.state.tasks[updatedIndex].deletedAt = new Date().toISOString();
+          this.setState({
+            tasks: [
+              ...this.state.tasks
+            ]
+          })
+        });
+        this.toggle();
+      }
+      // }
+      
+      
+render() {
   return (
     <div className="userform">
       <div className="userheader bg-white row border order:1px solid">
@@ -70,7 +119,7 @@ export default class Users extends Component{
             {" "}
             + Add New User
           </button>
-          {/* <button  type="button" className="btn btn-info"> + Add Stocks</button> */}
+          
           <Modal isOpen={this.state.modal} toggle={this.toggle}>
             <ModalHeader toggle={this.toggle}>Add New User</ModalHeader>
             <ModalBody>
@@ -79,16 +128,18 @@ export default class Users extends Component{
                 <input
                   type="text"
                   className="form-control"
-                  id="item"
+                  name="UserName"
+                  id="UserName"
                   placeholder="Enter Username"
                 />
               </div>
               <div className="form-group">
                 <label htmlFor="brand">Password</label>
                 <input
-                  type="text"
+                  type="Password"
                   className="form-control"
-                  id="brand"
+                  name="Password"
+                  id="Password"
                   placeholder="Enter Password"
                 />
               </div>
@@ -98,21 +149,22 @@ export default class Users extends Component{
                 <input
                   type="text"
                   className="form-control"
-                  id="price"
+                  name="AccountName"
+                  id="AccountName"
                   placeholder="Enter Name"
                 />
               </div>
               <div className="form-group">
                 <label htmlFor="unit">Account Access</label>
-                <select className="form-control" id="unit">
+                <select className="form-control" id="AccountType">
                   <option value="">Select Account Access</option>
-                  <option value="select1">Admin</option>
-                  <option value="select2">User</option>
+                  <option value="Admin">Admin</option>
+                  <option value="User">User</option>
                 </select>
               </div>
             </ModalBody>
             <ModalFooter>
-              <Button color="primary" onClick={this.toggle}>
+              <Button color="primary" onClick={() => this.addNewUser()}>
                 Save
               </Button>{" "}
               <Button color="secondary" onClick={this.toggle}>
@@ -128,7 +180,7 @@ export default class Users extends Component{
           <caption>List of Users</caption>
           <thead>
             <tr>
-              <th scope="col">#</th>
+              {/* <th scope="col">#</th> */}
               <th scope="col">Complete Name</th>
               <th scope="col">Account Type</th>
               <th scope="col">Username</th>
@@ -140,7 +192,7 @@ export default class Users extends Component{
             {this.state.users.map((user, index) => {
               return (
                 <tr>
-                  <th scope="row">{user.id}</th>
+                  {/* <th scope="row">{user.id}</th> */}
                   <td>{user.user_CompleteName}</td>
                   <td>{user.user_AccountType}</td>
                   <td>{user.user_Username}</td>
@@ -149,7 +201,7 @@ export default class Users extends Component{
                     <button type="button" className="btn btn-success">
                       Edit
                     </button>
-                    <button type="button" className="btn btn-danger">
+                    <button type="button" className="btn btn-danger" onClick={(e) => this.userDelete(user.id,e)}>
                       Del
                     </button>
                   </td>
@@ -159,29 +211,28 @@ export default class Users extends Component{
           </tbody>
         </table>
       </div>
-      <div className="row userfooter">
-        <div className="d-flex justify-content-center">
-          <i className="fa fa-fw fa-map-marker fa-lg "></i>
-          <label className="text-white">
-            Address : Zone 5, San Pablo, Calabanga, Camarines Sur
-          </label>
-        </div>
-        <div className="d-flex justify-content-center">
-          <i className="fa fa-fw fa-phone fa-lg"></i>
-          <label className="text-white">Phone : 054-871-6778</label>
-        </div>
-        <div className="d-flex justify-content-center">
-          <i className="fa fa-fw fa-facebook-square fa-lg"></i>
-          <i className="fa fa-fw fa-envelope fa-lg"></i>
-          <i className="fa fa-fw fa-linkedin-square fa-lg"></i>
-        </div>
+            <div className="row userfooter">
+              <div className="d-flex justify-content-center">
+                <i className="fa fa-fw fa-map-marker fa-lg "></i>
+                <label className="text-white">
+                  Address : Zone 5, San Pablo, Calabanga, Camarines Sur
+                </label>
+              </div>
+            <div className="d-flex justify-content-center">
+                <i className="fa fa-fw fa-phone fa-lg"></i>
+              <label className="text-white">Phone : 054-871-6778</label>
+            </div>
+              <div className="d-flex justify-content-center">
+                <i className="fa fa-fw fa-facebook-square fa-lg"></i>
+                <i className="fa fa-fw fa-envelope fa-lg"></i>
+                <i className="fa fa-fw fa-linkedin-square fa-lg"></i>
+              </div>
 
-        <div className="d-flex justify-content-center">
-          Copyright © {yearTxt} All rights reserved - LEC
-        </div>
-      </div>
-      {/* </div> */}
+              <div className="d-flex justify-content-center">
+                Copyright © {yearTxt} All rights reserved - LEC
+              </div>
+            </div>
     </div>
-  );
-}
+    );
+  }
 }

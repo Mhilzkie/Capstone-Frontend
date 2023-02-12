@@ -33,6 +33,42 @@ export default class Customers extends Component{
               })
             }
           )
+          
+      }
+      addNewCustomer = () => {
+        //  e.preventDefault();
+        // e.preventDefault();
+        // const newProduct = document.cookie.split(';')[0].split('=')[1];
+        // console.log(Productinfo);
+        var customerName = document.getElementById('customer_Name').value
+        // console.log(productName);
+        var customerNo =document.getElementById('customer_No').value
+        // console.log(productBrand);
+        var customerAddress =document.getElementById('customer_Address').value
+        // console.log(productUnit);
+        var customerStatus=document.getElementById('customer_Status').value
+        axios.post(`http://localhost:4000/form-new-customer`, {
+
+        customer_Name: customerName,
+        customer_ContactNo: customerNo,
+        customer_Address: customerAddress,
+        customer_Status: customerStatus
+        
+      
+        }).then((response) => {
+          this.setState({
+            customers: [
+              ...this.state.customers,
+              {customer_Name: customerName,
+                customer_ContactNo: customerNo,
+                customer_Address: customerAddress,
+                customer_Status: customerStatus}
+              ]
+          })
+          
+        });
+        // const refresh = () => window.location.reload(true)
+        this.toggle();
       }
 
       render() {
@@ -61,7 +97,8 @@ export default class Customers extends Component{
                     <input
                       type="text"
                       className="form-control"
-                      id="item"
+                      name='customer_Name'
+                      id='customer_Name'
                       placeholder="Enter Customer's Name"
                     />
                   </div>
@@ -70,7 +107,8 @@ export default class Customers extends Component{
                     <input
                       type="text"
                       className="form-control"
-                      id="brand"
+                      name='customer_No'
+                      id='customer_No'
                       placeholder="Enter Contact No."
                     />
                   </div>
@@ -80,7 +118,8 @@ export default class Customers extends Component{
                     <input
                       type="text"
                       className="form-control"
-                      id="price"
+                      name='customer_Address'
+                      id='customer_Address'
                       placeholder="Enter Address"
                     />
                   </div>
@@ -89,7 +128,8 @@ export default class Customers extends Component{
                     <input
                       type="text"
                       className="form-control"
-                      id="price"
+                      name='customer_Status'
+                      id='customer_Status'
                       placeholder="Enter Status"
                     />
                   </div>
@@ -104,7 +144,7 @@ export default class Customers extends Component{
                   </div>
                 </ModalBody>
                 <ModalFooter>
-                  <Button color="primary" onClick={this.toggle}>
+                  <Button color="primary" onClick={() => this.addNewCustomer()}>
                     Save
                   </Button>{" "}
                   <Button color="secondary" onClick={this.toggle}>
@@ -120,7 +160,7 @@ export default class Customers extends Component{
                   <caption>List of Customers</caption>
                   <thead>
                     <tr>
-                      <th scope="col">#</th>
+                      {/* <th scope="col">#</th> */}
                       <th scope="col">Customer's Name</th>
                       <th scope="col">Contact No.</th>
                       <th scope="col">Address</th>
@@ -132,7 +172,7 @@ export default class Customers extends Component{
                     {this.state.customers.map((customer, index) => {
                       return (
                         <tr>
-                          <th scope="row">{customer.id}</th>
+                          {/* <th scope="row">{index}</th> */}
                           <td>{customer.customer_Name}</td>
                           <td>{customer.customer_ContactNo}</td>
                           <td>{customer.customer_Address}</td>

@@ -43,24 +43,14 @@ export default class Products extends Component{
           )
       }
     
-      addNewProduct = () => {
-        //  e.preventDefault();
-        // e.preventDefault();
-        // const newProduct = document.cookie.split(';')[0].split('=')[1];
-        // console.log(Productinfo);
-        var productName= document.getElementById('product_Name').value
-        // console.log(productName);
-        var productBrand=document.getElementById('product_Description').value
-        // console.log(productBrand);
-        var productUnit=document.getElementById('product_Unit').value
-        // console.log(productUnit);
-        var productPrice=document.getElementById('product_Price').value
-        // console.log(productPrice);
-        var productQuatity = document.getElementById('product_Quantity').value
-        // console.log(productQuatity);
+      addNewProduct = (e) => {
         
-        // const insertProduct = { productName,productBrand,productUnit,productPrice,productQuatity };
-        // console.log(insertProduct);
+        var productName= document.getElementById('product_Name').value
+        var productBrand=document.getElementById('product_Description').value
+        var productUnit=document.getElementById('product_Unit').value
+        var productPrice=document.getElementById('product_Price').value
+        var productQuatity = document.getElementById('product_Quantity').value
+        
         axios.post(`http://localhost:4000/form-new-product`, {
 
         product_Name: productName,
@@ -71,11 +61,18 @@ export default class Products extends Component{
       
         }).then((response) => {
           this.setState({
-            // products: [...response.results]
+          products: [
+              ...this.state.products,
+              {product_Name: productName,
+                product_Description: productBrand,
+                product_Unit: productUnit,
+                product_Quantity: productQuatity,
+                product_Price: productPrice}
+              ]
           })
-          
+            
         });
-        // const refresh = () => window.location.reload(true)
+        this.toggle();
       }
 
     render() {
@@ -100,8 +97,6 @@ export default class Products extends Component{
                     {" "}
                     + Add New Product
                   </button>
-
-                  {/* <button  type="button" className="btn btn-info"> + Add Stocks</button> */}
                 </div>
                 
                 <Modal isOpen={this.state.modal} toggle={this.toggle}>
@@ -187,7 +182,7 @@ export default class Products extends Component{
                   <caption>List of Products</caption>
                   <thead>
                     <tr>
-                      <th scope="col">#</th>
+                      {/* <th scope="col">#</th> */}
                       <th scope="col">Item</th>
                       <th scope="col">Brand</th>
                       <th scope="col">Unit</th>
@@ -200,7 +195,7 @@ export default class Products extends Component{
                     {this.state.products.map((product, index) => {
                       return (
                         <tr>
-                          <th scope="row">{product.id}</th>
+                          {/* <th scope="row">{product.id}</th> */}
                           <td>{product.product_Name}</td>
                           <td>{product.product_Description}</td>
                           <td>{product.product_Unit}</td>
@@ -239,21 +234,9 @@ export default class Products extends Component{
                     <div>
                     Copyright © { yearTxt } All rights reserved - LEC
                     </div>
-                  <i className="fa fa-fw fa-phone fa-lg"></i>
-                  <label className="text-white">Phone : 054-871-6778</label>
-                </div>
-                <div>
-                  <i className="fa fa-fw fa-facebook-square fa-lg"></i>
-                  <i className="fa fa-fw fa-envelope fa-lg"></i>
-                  <i className="fa fa-fw fa-linkedin-square fa-lg"></i>
-                </div>
-
-                <div>Copyright © {yearTxt} All rights reserved - LEC</div>
               </div>
             </div>
-          // </div>
+          </div>
         );
 }
 }
-
-

@@ -1,0 +1,38 @@
+.userdata{
+    margin: 50px; /* Same as the width of the sidenav */
+    padding: 50px 50px;
+    margin-top: 0px;
+    height: 650px;
+}
+.userform{
+    padding-left: 190px;
+}
+.userheader{
+    height: 50px;
+    margin-left: 10px;
+}
+.userfooter{
+    width: 102%;
+    height: 200px;
+   background-color: rgb(52, 53, 52);
+   align-content: center;
+   color:black;
+   color:rgb(253, 252, 252);
+}
+
+.btnadduser{
+    padding:15px;
+    margin-top: 1px;
+    padding-top: 1px;
+
+
+
+  }
+  div.rowwidth{
+    width: 800px;
+  }
+  .table{
+    margin-left: 1%;
+    margin-top: 20px;
+    margin-bottom: 700px;
+  }
