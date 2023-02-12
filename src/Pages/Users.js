@@ -82,19 +82,19 @@ export default class Users extends Component{
       userDelete(id){
        // const confirmDelete = window.confirm(`Delete the entry with id ${id}?`);
       // if (confirmDelete){
-        
-        axios.delete(`http://localhost:4001/userdelete/${id}`)
+        console.log(id)
+        axios.delete(`http://localhost:4000/userdelete/${id}`)
         .then(() => {
-          // const updatedIndex = this.state.tasks.findIndex(task => task.id === id);
+          const updatedIndex = this.state.users.findIndex(user => user.id === id);
           // get index of updated entry on array
-          // this.state.tasks[updatedIndex].deletedAt = new Date().toISOString();
+          this.state.users[updatedIndex].deletedAt = new Date().toISOString();
           this.setState({
-            tasks: [
-              ...this.state.tasks
+            users: [
+              ...this.state.users
             ]
           })
         });
-        this.toggle();
+        // this.toggle();
       }
       // }
       
@@ -190,6 +190,24 @@ render() {
           </thead>
           <tbody>
             {this.state.users.map((user, index) => {
+              if(!user.deletedAt){
+                return(
+                <tr>
+                  <td>{user.user_CompleteName}</td>
+                  <td>{user.user_AccountType}</td>
+                  <td>{user.user_Username}</td>
+                  <td>{user.user_Password}</td>
+                  <td>
+                    <button type="button" className="btn btn-success">
+                      Edit
+                    </button>
+                    <button type="button" className="btn btn-danger" onClick={() => this.userDelete(user.id)}>
+                      Del
+                    </button>
+                  </td>
+                </tr>
+                )
+              }else{
               return (
                 <tr>
                   {/* <th scope="row">{user.id}</th> */}
@@ -201,13 +219,16 @@ render() {
                     <button type="button" className="btn btn-success">
                       Edit
                     </button>
-                    <button type="button" className="btn btn-danger" onClick={(e) => this.userDelete(user.id,e)}>
+                    <button type="button" className="btn btn-danger" onClick={this.userDelete(user.id)}>
                       Del
                     </button>
                   </td>
                 </tr>
+              
               );
-            })}
+            }
+            })
+            }
           </tbody>
         </table>
       </div>
