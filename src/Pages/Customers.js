@@ -71,6 +71,25 @@ export default class Customers extends Component{
         this.toggle();
       }
 
+      customerDelete(id){
+        // const confirmDelete = window.confirm(`Are you sure you want to Delete the Customer Entry with id ${id}?`);
+      //  if (confirmDelete){
+         console.log(id)
+         axios.delete(`http://localhost:4000/customerdelete/${id}`)
+         .then((response) => {
+           const updatedCustomer = this.state.customers.filter(customers => customers.id !== id);
+           // get index of updated entry on array
+           // this.state.users[updatedIndex].deletedAt = new Date().toISOString();
+           this.setState({
+            customers: [
+               ...updatedCustomer
+             ]
+           })
+         });
+      //  }
+         // this.toggle();
+       }
+
       render() {
         return (
           <div className="customerform">
@@ -169,7 +188,26 @@ export default class Customers extends Component{
                     </tr>
                   </thead>
                   <tbody>
-                    {this.state.customers.map((customer, index) => {
+                  {this.state.customers.map((customer, index) => {
+                  if(!customer.deletedAt){
+                    return(
+                        <tr>
+                          {/* <th scope="row">{index}</th> */}
+                          <td>{customer.customer_Name}</td>
+                          <td>{customer.customer_ContactNo}</td>
+                          <td>{customer.customer_Address}</td>
+                          <td>{customer.customer_Status}</td>
+                          <td>
+                            <button type="button" className="btn btn-success">
+                              Edit
+                            </button>
+                            <button type="button" className="btn btn-danger" onClick={this.customerDelete(customer.id)}>
+                              Del
+                            </button>
+                          </td>
+                        </tr>
+                        )
+                      }else{
                       return (
                         <tr>
                           {/* <th scope="row">{index}</th> */}
@@ -181,13 +219,16 @@ export default class Customers extends Component{
                             <button type="button" className="btn btn-success">
                               Edit
                             </button>
-                            <button type="button" className="btn btn-danger">
+                            <button type="button" className="btn btn-danger" onClick={this.customerDelete(customer.id)}>
                               Del
                             </button>
                           </td>
                         </tr>
-                      );
-                    })}
+                              
+                        );
+                      }
+                      })
+                      }
                   </tbody>
                 </table>
               </div>
