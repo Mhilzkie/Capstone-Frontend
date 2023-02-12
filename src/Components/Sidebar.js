@@ -12,6 +12,8 @@ import Company from "../Pages/Company";
 import Order from "../Pages/Order";
 import Login from '../Pages/Login';
 import Suppliers from '../Pages/Suppliers';
+import StockIn from '../Pages/StockIn';
+import StockOut from '../Pages/StockOut';
 
 
 const Sidebar = () =>{
@@ -45,6 +47,18 @@ const Sidebar = () =>{
                 <i className="fa fa-fw fa-dropbox ">
                   </i><span>      
                     </span>Products</NavLink>
+                    <NavLink 
+              exact activeClassName=" mt-0 " 
+              to="/StockIn">
+                <i className="fa fa-fw fa-sign-in ">
+                  </i><span>      
+                    </span>Stock In</NavLink>
+                    <NavLink 
+              exact activeClassName=" mt-0 " 
+              to="/StockOut">
+                <i className="fa fa-fw fa-sign-out">
+                  </i><span>      
+                    </span>Stock out</NavLink>
             <NavLink  
               exact activeClassName=" mt-0 " 
               to="/orders"><i className="fa fa-fw fa-list-alt ">
@@ -91,11 +105,14 @@ const Sidebar = () =>{
           <Route exact path="/" element = {<Homepage />}></Route>
           <Route  path="/dashboard" element={<Dashboard />}></Route>
           <Route  path="/products" element={<Products />}></Route>
+          <Route  path="/StockIn" element={<StockIn />}></Route>
+          <Route  path="/StockOut" element={<StockOut />}></Route>
           <Route  path="/customers" element={<Customers />}></Route>
           <Route  path="/suppliers" element={<Suppliers />}></Route>
           <Route  path="/users" element={<Users />}></Route>
           <Route  path="/company" element={<Company />}></Route>
           <Route  path="/orders" element={<Order />}></Route>
+          
         </Routes>
         </div>
       </Router>
