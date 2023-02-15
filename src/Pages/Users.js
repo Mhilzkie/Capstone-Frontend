@@ -21,7 +21,7 @@ import { render } from '@testing-library/react';
 
 const currentYear = (new Date().getFullYear())
 const yearTxt = currentYear === 2022 ? "2022" : "2022 - "+currentYear
-var sID,updatedCustName,updatedContact,updatedAdd,updatedStatus;
+
 export default class Users extends Component{
     constructor(props) {
         super(props);
@@ -80,8 +80,8 @@ export default class Users extends Component{
       }
 
       userDelete(id){
-      //  const confirmDelete = window.confirm(`Delete the entry with id ${id}?`);
-      // if (confirmDelete){
+       const confirmDelete = window.confirm(`Delete the entry with id ${id}?`);
+      if (confirmDelete){
         console.log(id)
         axios.delete(`http://localhost:4000/userdelete/${id}`)
         .then((response) => {
@@ -94,35 +94,10 @@ export default class Users extends Component{
             ]
           })
         });
-      // }
         // this.toggle();
       }
-      // }
-      selectUser(id, name,type,username,password,e){
-        console.log(id, name,type,username,password)
-        
-        document.getElementById("AccountName").value = name;
-        document.getElementById("UserName").value = username;
-        document.getElementById("Password").value = password;
-        document.getElementById("AccountType").value = type;
-        this.toggle();
       }
-    
-      userUpdate(id, e){
-        id = sID;
-        const task =  document.getElementById("new-todo-input").value;
-        const updatedTask = { task };
-        axios.put(`http://localhost:4001/tasks/${id}` , updatedTask)
-          .then(response => {
-            const updatedIndex = this.state.tasks.findIndex(task => task.id === id);
-            this.state.tasks[updatedIndex].task = task;
-            this.setState({
-              tasks: [
-                ...this.state.tasks
-              ]
-            })
-          });
-      }
+      
       
 render() {
   return (
@@ -223,7 +198,7 @@ render() {
                   <td>{user.user_Username}</td>
                   <td>{user.user_Password}</td>
                   <td>
-                    <button type="button" className="btn btn-success" onClick={(e) => this.selectUser(user.id,user.user_CompleteName,user.user_AccountType,user.user_Username,user.user_Password, e)} >
+                    <button type="button" className="btn btn-success">
                       Edit
                     </button>
                     <button type="button" className="btn btn-danger" onClick={() => this.userDelete(user.id)}>
@@ -244,7 +219,7 @@ render() {
                     <button type="button" className="btn btn-success">
                       Edit
                     </button>
-                    <button type="button" className="btn btn-danger" onClick={this.userDelete(user.id)}>
+                    <button type="button" className="btn btn-danger" onClick={() => this.userDelete(user.id)}>
                       Del
                     </button>
                   </td>

@@ -72,8 +72,8 @@ export default class Customers extends Component{
       }
 
       customerDelete(id){
-        // const confirmDelete = window.confirm(`Are you sure you want to Delete the Customer Entry with id ${id}?`);
-      //  if (confirmDelete){
+        const confirmDelete = window.confirm(`Are you sure you want to Delete the Customer Entry with id ${id}?`);
+       if (confirmDelete){
          console.log(id)
          axios.delete(`http://localhost:4000/customerdelete/${id}`)
          .then((response) => {
@@ -86,7 +86,7 @@ export default class Customers extends Component{
              ]
            })
          });
-      //  }
+       }
          // this.toggle();
        }
 
@@ -201,7 +201,8 @@ export default class Customers extends Component{
                             <button type="button" className="btn btn-success">
                               Edit
                             </button>
-                            <button type="button" className="btn btn-danger" onClick={this.customerDelete(customer.id)}>
+                            <button type="button" className="btn btn-danger"  onClick={() => this.customerDelete(customer.id)}>
+                           
                               Del
                             </button>
                           </td>
@@ -219,7 +220,7 @@ export default class Customers extends Component{
                             <button type="button" className="btn btn-success">
                               Edit
                             </button>
-                            <button type="button" className="btn btn-danger" onClick={this.customerDelete(customer.id)}>
+                            <button type="button" className="btn btn-danger" onClick={() => this.customerDelete(customer.id)}>
                               Del
                             </button>
                           </td>

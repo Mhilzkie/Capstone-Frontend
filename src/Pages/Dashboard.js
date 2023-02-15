@@ -12,6 +12,7 @@ import '../Pages/Dashboard.css';
 import {Component} from 'react';
 import React, {useState} from 'react';
 import Footer from '../Components/Footer';
+// import dailyStockOutChart from '../Components/dailyStockOutChart';
 
 
 const currentYear = (new Date().getFullYear())
@@ -191,41 +192,7 @@ export default class Dashboard extends Component{
                 <div className='row'>
                   
                 <div className='col mt-5 tabledesign'>
-                <h3>Order History</h3>
-                  <div className='col'>
-                    <table class="table col">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Transaction No</th>
-                        <th scope="col">Customer</th>
-                        <th scope="col">Status</th>
-                      </tr>
-                    </thead>
-                    <tbody class="table-group-divider">
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>LGDE-0001-121222</td>
-                        <td>Lagarde Hardware</td>
-                        <td>Paid / Delivered</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>OMPS-0002-121322</td>
-                        <td>Samson Wrapper</td>
-                        <td>Paic / Pickup</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td >INSYA-0003-121322</td>
-                        <td>Insuya Catering</td>
-                        <td>Paid / Pickup</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  
-                  </div>
-          
+                <dailyStockOutChar/>
                 </div>
                 <div className='col mt-5 tabledesign'>
                   <div className='col'>

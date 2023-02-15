@@ -110,7 +110,7 @@ export default class Products extends Component{
                       <label htmlFor="item">Item</label>
                       <input
                         type="text"
-                        className="form-control"
+                        className="form-control btn-text-left"
                         name="product_Name"
                         id="product_Name"
                         placeholder="Enter item name"

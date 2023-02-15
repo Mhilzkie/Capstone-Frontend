@@ -12,7 +12,7 @@ import Company from "../Pages/Company";
 import Order from "../Pages/Order";
 import Login from '../Pages/Login';
 import Suppliers from '../Pages/Suppliers';
-import StockIn from '../Pages/StockIn';
+import StocksIn from '../Pages/StocksIn';
 import StockOut from '../Pages/StockOut';
 
 
@@ -105,7 +105,7 @@ const Sidebar = () =>{
           <Route exact path="/" element = {<Homepage />}></Route>
           <Route  path="/dashboard" element={<Dashboard />}></Route>
           <Route  path="/products" element={<Products />}></Route>
-          <Route  path="/StockIn" element={<StockIn />}></Route>
+          <Route  path="/StockIn" element={<StocksIn />}></Route>
           <Route  path="/StockOut" element={<StockOut />}></Route>
           <Route  path="/customers" element={<Customers />}></Route>
           <Route  path="/suppliers" element={<Suppliers />}></Route>
