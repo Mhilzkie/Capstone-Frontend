@@ -91,26 +91,23 @@ export default class Suppliers extends Component{
     <div className="userform">
                 
                 <div className="userheader bg-white row border order:1px solid">
-                    
-                        <div className="col">
-                            <label className="text-dark usertalign"><i className="fa fa-fw fa-user-circle-o"></i>
-                            <span>      </span>Suppliers </label><label className="usersubname">- Management</label>
+                    <div className="col">
+                       <label className="text-dark usertalign"><i className="fa fa-fw fa-user-circle-o"></i>
+                        <span>      </span>Suppliers </label><label className="usersubname">- Management</label>
                         </div>
-                        <div className="btnadduser col d-grid gap-2 d-md-flex justify-content-md-end">
+                          <div className="btnadduser col d-grid gap-2 d-md-flex justify-content-md-end">
                             <button  
                             type="button" 
                             className="btn btn-success"
                             onClick={this.toggle}>
-                                {" "}
-                                 + Add New Suppliers</button>
-                            {/* <button  type="button" className="btn btn-info"> + Add Stocks</button> */}
-                        </div>  
-                </div>
-                
-                <Modal size='lg' isOpen={this.state.modal} toggle={this.toggle}>
-                  <ModalHeader toggle={this.toggle}>
-                    Add New Product
-                  </ModalHeader>
+                              {" "}
+                              + Add New Suppliers</button>
+                          </div>  
+                        </div>
+                  <Modal size='lg' isOpen={this.state.modal} toggle={this.toggle}>
+                    <ModalHeader toggle={this.toggle}>
+                      Add New Product
+                    </ModalHeader>
                   <ModalBody>
                 <div className='row rowwidth'>
                 <div className='col' >
@@ -224,8 +221,8 @@ export default class Suppliers extends Component{
                             </thead>
                             <tbody>
                             {
-                this.state.suppliers.map((suppplier, index) => {
-                     return (
+                          this.state.suppliers.map((suppplier, index) => {
+                          return (
                         <tr>
                         {/* <th scope="row">{suppplier.id}</th> */}
                         <td>{suppplier.supplierName}</td>

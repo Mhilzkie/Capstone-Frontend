@@ -192,26 +192,7 @@ export default class Products extends Component{
                     </tr>
                   </thead>
                   <tbody>
-                    {this.state.products.map((product, index) => {
-                      return (
-                        <tr>
-                          {/* <th scope="row">{product.id}</th> */}
-                          <td>{product.product_Name}</td>
-                          <td>{product.product_Description}</td>
-                          <td>{product.product_Unit}</td>
-                          <td>{product.product_Price}</td>
-                          <td>{product.product_Quantity}</td>
-                          <td>
-                            <button type="button" className="btn btn-success">
-                              Edit
-                            </button>
-                            <button type="button" className="btn btn-danger">
-                              Del
-                            </button>
-                          </td>
-                        </tr>
-                      );
-                    })}
+
                   </tbody>
                 </table>
               </div>

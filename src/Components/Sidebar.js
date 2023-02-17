@@ -59,11 +59,11 @@ const Sidebar = () =>{
                 <i className="fa fa-fw fa-sign-out">
                   </i><span>      
                     </span>Stock out</NavLink>
-            <NavLink  
+            {/* <NavLink  
               exact activeClassName=" mt-0 " 
               to="/orders"><i className="fa fa-fw fa-list-alt ">
                 </i><span>      
-                  </span>Order</NavLink>
+                  </span>Order</NavLink> */}
             <NavLink 
               exact activeClassName=" mt-0 " 
               to="/customers">
@@ -111,7 +111,7 @@ const Sidebar = () =>{
           <Route  path="/suppliers" element={<Suppliers />}></Route>
           <Route  path="/users" element={<Users />}></Route>
           <Route  path="/company" element={<Company />}></Route>
-          <Route  path="/orders" element={<Order />}></Route>
+          {/* <Route  path="/orders" element={<Order />}></Route> */}
           
         </Routes>
         </div>

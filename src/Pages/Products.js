@@ -178,7 +178,7 @@ export default class Products extends Component{
             
             <div className="mainproduct">
               <div className="producttable">
-                <table class="table caption-top">
+                <table class="table caption-top" >
                   <caption>List of Products</caption>
                   <thead>
                     <tr>
