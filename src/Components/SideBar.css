@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family: "Lato", sans-serif;
+    background-color: #eeeeee;
   }
   .mystyle{
     font-size: 24px;
@@ -28,10 +29,16 @@ body {
     margin: 0;
     padding: 0;
     width: 200px;
-    background-color: #2993da;
+    background-color: #eeeeee;
     position: fixed;
     height: 100%;
     overflow: auto;
+  }
+  .sidebar:-webkit-scrollbar-thumb {
+    background: red;
+  }
+  span {
+    
   }
   .bgimg{
     padding: 4px;
@@ -47,12 +54,34 @@ body {
    
   .sidebar a.active {
     background-color: #fdbb05;
-    color: rgb(10, 10, 10);
+    color: rgb(85, 85, 85);
   }
   .sidebar button.active {
     background-color: #fdbb05;
-    color: white;
+    color: rgb(0, 0, 0);
   }
+
+  .sidebar a {
+    color: black;
+    width: 85%;
+    background-color: #a8a8a84b;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    font-size: 1vw;
+  }
+#logo {
+  width: 100%;
+  margin-top: 0%;
+  border-radius: 0px;
+}
+*::-webkit-scrollbar {
+  width: 10px
+}
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(105, 105, 105, 0.548);
+  border-radius: 10px;
+}
   
   .sidebar a:hover:not(.active) {
     background-color: rgb(13, 26, 211);

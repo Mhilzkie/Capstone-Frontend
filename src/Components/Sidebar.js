@@ -26,7 +26,7 @@ const Sidebar = () =>{
       <Router>
         <div className="sidebar col">
        
-            <h4><a href="index.html" 
+            <h4><a id="logo" href="index.html" 
             className="bg-dark ps-1 divstyle">
               <span>    </span> 
               <span className="mystyle text-warning bg-dark ps-0 pt-1">

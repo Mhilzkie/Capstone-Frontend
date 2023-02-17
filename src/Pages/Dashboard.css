@@ -2,7 +2,7 @@
   padding-left: 200px;
   width:100%;
   height:1000px;
-  background-color:#FFFFFF;
+  background-color:#eeeeee;
   border:4px dashed rgb(113, 113, 116,113, 113, 116);
 }
 .dasheader{
@@ -29,9 +29,12 @@
     margin-left: 20px;
     margin-top: 60px;
   background-color:#fdfcfc;
-  border:4px solid rgb(200, 200, 206);
+  box-shadow: 0 1px 15px 1px rgba(0, 0, 0, 0.25);;
   height: 500px;
   width: 50%;
+  border-radius: 10px;
+  overflow: hidden;
+  overflow-y: auto;
 }
 .centeralign{
   align-content: center;
@@ -93,15 +96,15 @@ align-content:center ;
   /* position:relative; */
 }
  .menucard{
-  box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 15px 1px rgba(0, 0, 0, 0.18);
   max-width: 210px;
   max-height: 100px;
-  margin: auto;
+  margin: 2%;
   text-align: center;
   font-family: arial;
-  background-color: rgb(243, 236, 236);
-  border: 2px solid rgb(99, 98, 98);
-  border-radius: 5px;
+  background-color: rgb(255, 254, 254);
+
+  border-radius: 10px;
 }
 .img-resized{
   height: 60px;
