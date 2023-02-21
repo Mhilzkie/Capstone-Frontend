@@ -24,7 +24,7 @@ export default class Customers extends Component{
         });
       };
     componentDidMount = () => {
-        fetch(`http://localhost:4000/customers`)
+        fetch(`https://lecwis-ys-db.vercel.app/customers`)
           .then(res =>res.json())
           .then(response => {
               console.log(response);
@@ -47,7 +47,7 @@ export default class Customers extends Component{
         var customerAddress =document.getElementById('customer_Address').value
         // console.log(productUnit);
         var customerStatus=document.getElementById('customer_Status').value
-        axios.post(`http://localhost:4000/form-new-customer`, {
+        axios.post(`https://lecwis-ys-db.vercel.app/form-new-customer`, {
 
         customer_Name: customerName,
         customer_ContactNo: customerNo,
@@ -75,7 +75,7 @@ export default class Customers extends Component{
         const confirmDelete = window.confirm(`Are you sure you want to Delete the Customer Entry with id ${id}?`);
        if (confirmDelete){
          console.log(id)
-         axios.delete(`http://localhost:4000/customerdelete/${id}`)
+         axios.delete(`https://lecwis-ys-db.vercel.app/customerdelete/${id}`)
          .then((response) => {
            const updatedCustomer = this.state.customers.filter(customers => customers.id !== id);
            // get index of updated entry on array
